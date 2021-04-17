@@ -9,15 +9,15 @@ const Header = (props) => {
         <React.Fragment>
             <Navbar dark expand="md">
                 <div className="container">
-                    <NavbarToggler onClick={setToggleNav} />
                     <NavbarBrand className="mr-auto" href="/">
                         <img src="assets/images/logo.png"
                              height="30px" width="41px"
                              alt="Ristorante Con Fusion"
                         />
                     </NavbarBrand>
+                    <NavbarToggler onClick={setToggleNav} />
                     <Collapse isOpen={isOpen} navbar>
-                        <Nav navbar>
+                        <Nav navbar className="ml-auto">
                             <NavItem>
                                 <NavLink className="nav-link" to="/home">
                                     <span className="fa fa-home fa-lg"></span> Home
