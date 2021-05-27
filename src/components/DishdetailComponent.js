@@ -6,6 +6,7 @@ import {
     BreadcrumbItem
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import CommentForm from "./CommentForm";
 
 
 
@@ -41,6 +42,7 @@ const RenderComments = ({comments}) => {
                 <ul className='list-unstyled'>
                     {commentListItems}
                 </ul>
+                <CommentForm />
             </div>
         );
     }
