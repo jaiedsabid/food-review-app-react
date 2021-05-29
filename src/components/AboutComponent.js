@@ -34,7 +34,7 @@ function About(props) {
     return(
         <div className="container">
             <div className="row">
-                <Breadcrumb className="mt-1">
+                <Breadcrumb className="mt-5">
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>About Us</BreadcrumbItem>
                 </Breadcrumb>

@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import {Control, LocalForm, Errors} from "react-redux-form";
 import {Link} from 'react-router-dom';
-
+import {Loading} from "./LoadingComponent";
 
 
 const required = val => val && val.length;
@@ -152,12 +152,27 @@ const RenderComments = ({comments, dishId, addComments}) => {
 };
 
 const DishDetail = (props) => {
-    if (props.dish != null)
-    {
+    if (props.isLoading) {
         return (
             <div className="container">
                 <div className="row">
-                    <Breadcrumb className="mt-1">
+                    <Loading />
+                </div>
+            </div>
+        );
+    } else if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    } else if (props.dish != null) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Breadcrumb className="mt-5">
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
