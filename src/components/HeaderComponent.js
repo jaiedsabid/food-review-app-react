@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input
 } from 'reactstrap';
 import {NavLink} from "react-router-dom";
+import {baseUrl} from "../shared/baseUrl";
 
 const Header = (props) => {
     const [isOpenNav, toggleNav] = useState(false);
@@ -27,7 +28,7 @@ const Header = (props) => {
             <Navbar dark expand="md">
                 <div className="container">
                     <NavbarBrand className="mr-auto" href="/">
-                        <img src="assets/images/logo.png"
+                        <img src={baseUrl + "/images/logo.png"}
                              height="30px" width="41px"
                              alt="Ristorante Con Fusion"
                         />

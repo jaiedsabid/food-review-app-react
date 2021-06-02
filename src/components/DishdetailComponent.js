@@ -10,6 +10,7 @@ import {
 import {Control, LocalForm, Errors} from "react-redux-form";
 import {Link} from 'react-router-dom';
 import {Loading} from "./LoadingComponent";
+import {baseUrl} from "../shared/baseUrl";
 
 
 const required = val => val && val.length;
@@ -31,7 +32,7 @@ class CommentForm extends Component {
     });
     handleSubmit = (values) => {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     };
 
     render() {
@@ -112,7 +113,7 @@ const RenderDish = ({dish}) => {
     return (
         <div className="col-12 col-md-5 m-1">
             <Card>
-                <CardImg src={dish.image}></CardImg>
+                <CardImg src={baseUrl + dish.image}></CardImg>
                 <CardBody>
                     <CardTitle className="font-weight-bold">{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>
@@ -122,7 +123,7 @@ const RenderDish = ({dish}) => {
     );
 };
 
-const RenderComments = ({comments, dishId, addComments}) => {
+const RenderComments = ({comments, dishId, postComment}) => {
     if(comments != null)
     {
         const commentListItems = comments.map(comment => {
@@ -140,7 +141,7 @@ const RenderComments = ({comments, dishId, addComments}) => {
                 <ul className='list-unstyled'>
                     {commentListItems}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComments} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         );
     }
@@ -185,7 +186,7 @@ const DishDetail = (props) => {
                 <div className='row'>
                     <RenderDish dish={props.dish} />
                     <RenderComments comments={props.comments}
-                                    addComments={props.addComment}
+                                    postComment={props.postComment}
                                     dishId={props.dish.id}
                     />
                 </div>
