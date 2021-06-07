@@ -19,8 +19,16 @@ class Contact extends Component {
     }
 
     handleSubmit(values) {
-        alert("We have received your message!\n" + JSON.stringify(values));
         this.props.resetFormFeedback();
+        this.props.postFeedback(
+            values.firstname,
+            values.lastname,
+            values.telnum,
+            values.email,
+            values.agree,
+            values.contactType,
+            values.message,
+        );
     }
 
 
